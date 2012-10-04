@@ -1,13 +1,4 @@
-logs
-history
 
-.classpath
-.project
-.settings
-.cache
-.target
-
-*~
 *.class
 *.log
 
@@ -20,4 +11,4 @@ project/boot/
 project/plugins/project/
 
 # Scala-IDE specific
-.scala_dependencies
+
