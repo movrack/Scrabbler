@@ -1,0 +1,44 @@
+@CHARSET "UTF-8";
+
+#board legend{
+	margin-bottom: 0;
+}
+
+#realBoard {
+	background-color: #090;
+	border: 2px solid darkred;
+	border-radius: 5px;
+	margin: auto;
+}
+
+#realBoard, #realBoard th, #realBoard td {
+	border-spacing: 0;
+	border-collapse: collapse;
+}
+#realBoard th, #realBoard td {
+	border: 1px solid white;
+	width: 32px;
+	height: 32px;
+	text-align: center;
+	padding: 0;
+	margin: 0;
+}
+#realBoard th {
+	background-color: #999;
+}
+.motTriple {
+	background-color: #900;	
+}
+.motDouble {
+	background-color: #F66;
+}
+
+.lettreTriple {
+	background-color: #009;	
+}
+.lettreDouble {
+	background-color: #09C;	
+}
+.caseCentre {
+
+}

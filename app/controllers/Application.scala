@@ -2,6 +2,7 @@ package controllers
 
 import play.api._
 import play.api.mvc._
+import models.Game
 
 object Application extends Controller {
   
@@ -9,7 +10,14 @@ object Application extends Controller {
     Ok(views.html.index("Scrabbler home"))
   }
   
-  def board = Action {
-    Ok(views.html.board("Scrabbler home"))
+  def game = Action {
+    val game = new Game()
+    println(game.bag)
+//    for(letter <- game.bag.letter) {
+//      println(letter)
+//    }
+//    Ok(views.html.game(game.board, game.bag, game.carrier))
+    Ok(views.html.game(game))
   }
+  
 }
