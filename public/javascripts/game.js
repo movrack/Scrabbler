@@ -2,26 +2,30 @@ function endDrop(currentObject, ui){
 	ui.draggable.attr("style", "");
 	$(currentObject).removeClass('highlightDrop');
 }
-
+var source = null;
 $(document).ready(function() {
 	// Drag
 	$('.letter').attr("draggable", true);
 	$('.letter').draggable({
 		start: function(event, ui){
+			console.log('----');
 			$(this).addClass('highlightDrag');
 			
 			var parentTag = $(this).parent();
-			
-			if(parentTag.hasClass("caseCentre")){
-				parentTag.html('<icon class="icon-asterisk"></icon>');
-			}
-			
+			console.log(parentTag);
+			source = parentTag;
 			if(parentTag.is("td")){
 				$(this).droppable( "option", "disabled", false );
 			}
 		},	
 		stop: function(event, ui){
 			$(this).removeClass('highlightDrag');
+			var parentTag = $(this).parent();
+			console.log(parentTag);
+			console.log(source);
+			if(source.hasClass("caseCentre") && source != parentTag){
+				source.html('<icon class="icon-asterisk"></icon>');
+			}
 		},	
 		revert: true,
 		zIndex: 2000,
