@@ -1,21 +1,18 @@
 @CHARSET "UTF-8";
 
-#board legend{
-	margin-bottom: 0;
-}
-
-#realBoard {
+#board {
 	background-color: #090;
 	border: 2px solid darkred;
-	border-radius: 5px;
+	border-radius: 10px;
 	margin: auto;
 }
 
-#realBoard, #realBoard th, #realBoard td {
-	border-spacing: 0;
-	border-collapse: collapse;
+#board, #board th, #board td {
+	border-spacing: 0px;
+/* 	border-collapse: collapse; */
 }
-#realBoard th, #realBoard td {
+
+#board th, #board td {
 	border: 1px solid white;
 	width: 32px;
 	height: 32px;
@@ -23,22 +20,14 @@
 	padding: 0;
 	margin: 0;
 }
-#realBoard th {
-	background-color: #999;
-}
-.motTriple {
-	background-color: #900;	
-}
-.motDouble {
-	background-color: #F66;
-}
+#board .coin-t-l { border-top-left-radius: 5px;}
+#board .coin-t-r { border-top-right-radius: 5px;}
+#board .coin-b-l { border-bottom-left-radius: 5px;}
+#board .coin-b-r { border-bottom-right-radius: 5px;}
 
-.lettreTriple {
-	background-color: #009;	
-}
-.lettreDouble {
-	background-color: #09C;	
-}
-.caseCentre {
-
-}
+#board th { background-color: grey; }
+.motTriple { background-color: red; }
+.motDouble { background-color: pink; }
+.lettreTriple { background-color: darkblue;	}
+.lettreDouble { background-color: lightblue;	}
+.caseCentre { }

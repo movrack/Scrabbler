@@ -4,353 +4,365 @@
 @main("Scrabbler") {
     <section class="row-fluid">
 		<div class="span4">
-			<fieldset id="sac"><legend>Sac</legend>
-			<div id="realSac">
-				@for(letter <- game.bag.letters) {
-					<div class="piece">@letter</div>
-				}
-				<div id="endSac" class="clear">&nbsp;</div>
+			<div id="bagPlace">
+				<h3>Sac</h3>
+				<div id="bag">
+					@for(letter <- game.bag.letters) {
+						<div class="letter">@letter</div>
+					}
+					<div id="endSac" class="clear">&nbsp;</div>
+				</div>
 			</div>
-			</fieldset>
-		</div>
-	
-		<div class="span3">
-			<fieldset id="portePiece"><legend>Porte lettres</legend>
-			<div id="realPortePiece"></div>
-			</fieldset>
-			<button id="searchButton" type="submit" class="btn btn-primary"><i class="icon-cog"></i> Chercher</button>
 		</div>
 		
-		<div class=" span5">
-			<fieldset id="board"><legend>Plateau</legend>
-			<table id="realBoard">
-				<tr>
-					<th scope="col">&nbsp;</th>
-					<th scope="col">1</th>
-					<th scope="col">2</th>
-					<th scope="col">3</th>
-					<th scope="col">4</th>
-					<th scope="col">5</th>
-					<th scope="col">6</th>
-					<th scope="col">7</th>
-					<th scope="col">8</th>
-					<th scope="col">9</th>
-					<th scope="col">10</th>
-					<th scope="col">11</th>
-					<th scope="col">12</th>
-					<th scope="col">13</th>
-					<th scope="col">14</th>
-					<th scope="col">15</th>
-					<th scope="col">&nbsp;</th>
-				</tr>
-				<tr>
-					<th scope="row">A</th>
-					<td class="motTriple">&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td class="lettreDouble">&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td class="motTriple">&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td class="lettreDouble">&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td class="motTriple">&nbsp;</td>
-					<th>A</th>
-				</tr>
-				<tr>
-					<th scope="row">B</th>
-					<td>&nbsp;</td>
-					<td class="motDouble">&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td class="lettreTriple">&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td class="lettreTriple">&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td class="motDouble">&nbsp;</td>
-					<td>&nbsp;</td>
-					<th>B</th>
-				</tr>
-				<tr>
-					<th scope="row">C</th>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td class="motDouble">&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td class="lettreDouble">&nbsp;</td>
-					<td>&nbsp;</td>
-					<td class="lettreDouble">&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td class="motDouble">&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<th>C</th>
-				</tr>
-				<tr>
-					<th scope="row">D</th>
-					<td class="lettreDouble">&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td class="motDouble">&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td class="lettreDouble">&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td class="motDouble">&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td class="lettreDouble">&nbsp;</td>
-					<th>D</th>
-				</tr>
-				<tr>
-					<th scope="row">E</th>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td class="motDouble">&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td class="motDouble">&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<th>E</th>
-				</tr>
-				<tr>
-					<th scope="row">F</th>
-					<td>&nbsp;</td>
-					<td class="lettreTriple">&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td class="lettreTriple">&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td class="lettreTriple">&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td class="lettreTriple">&nbsp;</td>
-					<td>&nbsp;</td>
-					<th>F</th>
-				</tr>
-				<tr>
-					<th scope="row">G</th>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td class="lettreDouble">&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td class="lettreDouble">&nbsp;</td>
-					<td>&nbsp;</td>
-					<td class="lettreDouble">&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td class="lettreDouble">&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<th>G</th>
-				</tr>
-				<tr>
-					<th scope="row">H</th>
-					<td class="motTriple">&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td class="lettreDouble">&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td class="motDouble caseCentre"><icon class="icon-asterisk"></icon></td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td class="lettreDouble">&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td class="motTriple">&nbsp;</td>
-					<th>H</th>
-				</tr>
-				<tr>
-					<th scope="row">I</th>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td class="lettreDouble">&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td class="lettreDouble">&nbsp;</td>
-					<td>&nbsp;</td>
-					<td class="lettreDouble">&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td class="lettreDouble">&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<th>I</th>
-				</tr>
-				<tr>
-					<th scope="row">J</th>
-					<td>&nbsp;</td>
-					<td class="lettreTriple">&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td class="lettreTriple">&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td class="lettreTriple">&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td class="lettreTriple">&nbsp;</td>
-					<td>&nbsp;</td>
-					<th>J</th>
-				</tr>
-				<tr>
-					<th scope="row">K</th>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td class="motDouble">&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td class="motDouble">&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;
-					</th>
-					<th>K
-					</td>
-				</tr>
-				<tr>
-					<th scope="row">L</th>
-					<td class="lettreDouble">&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td class="motDouble">&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td class="lettreDouble">&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td class="motDouble">&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td class="lettreDouble">&nbsp;</td>
-					<th>L</th>
-				</tr>
-				<tr>
-					<th scope="row">M</th>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td class="motDouble">&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td class="lettreDouble">&nbsp;</td>
-					<td>&nbsp;</td>
-					<td class="lettreDouble">&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td class="motDouble">&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<th>M</th>
-				</tr>
-				<tr>
-					<th scope="row">N</th>
-					<td>&nbsp;</td>
-					<td class="motDouble">&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td class="lettreTriple">&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td class="lettreTriple">&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td class="motDouble">&nbsp;</td>
-					<td>&nbsp;</td>
-					<th>N</th>
-				</tr>
-				<tr>
-					<th scope="row">O</th>
-					<td class="motTriple">&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td class="lettreDouble">&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td class="motTriple">&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td class="lettreDouble">&nbsp;</td>
-					<td>&nbsp;</td>
-					<td dropzone="move">&nbsp;</td>
-					<td class="motTriple">&nbsp;</td>
-					<th>O</th>
-				</tr>
-				<tr>
-					<th scope="row">&nbsp;</th>
-					<th>1</th>
-					<th>2</th>
-					<th>3</th>
-					<th>4</th>
-					<th>5</th>
-					<th>6</th>
-					<th>7</th>
-					<th>8</th>
-					<th>9</th>
-					<th>10</th>
-					<th>11</th>
-					<th>12</th>
-					<th>13</th>
-					<th>14</th>
-					<th>15</th>
-					<th>&nbsp;</th>
-				</tr>
-			</table>
-			</fieldset>
+		<div class="span3">
+		
+			<div id="carrierPlace">
+				<h3>Mes lettres</h3>
+				<div id="carrier"></div>
+				<div id="finderPlace">
+					<button id="searchButton" type="submit" class="btn btn-primary">
+						<i class="icon-white icon-search"></i> Trouver la meilleur solution
+					</button>
+				</div>
+			</div>
+			
+			<div id="resultsPlace">
+				<h3>Zone de résultat</h3>
+			</div>
+		</div>
+		
+		<div class="span5">
+			<div id="boardPlace">
+				<h3>Plateau</h3>
+				<table id="board" class="table-bordered">
+					<tr>
+						<th class="coin-t-l">&nbsp;</th>
+						<th>1</th>
+						<th>2</th>
+						<th>3</th>
+						<th>4</th>
+						<th>5</th>
+						<th>6</th>
+						<th>7</th>
+						<th>8</th>
+						<th>9</th>
+						<th>10</th>
+						<th>11</th>
+						<th>12</th>
+						<th>13</th>
+						<th>14</th>
+						<th>15</th>
+						<th class="coin-t-r">&nbsp;</th>
+					</tr>
+					<tr>
+						<th>A</th>
+						<td class="motTriple">&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td class="lettreDouble">&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td class="motTriple">&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td class="lettreDouble">&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td class="motTriple">&nbsp;</td>
+						<th>A</th>
+					</tr>
+					<tr>
+						<th>B</th>
+						<td>&nbsp;</td>
+						<td class="motDouble">&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td class="lettreTriple">&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td class="lettreTriple">&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td class="motDouble">&nbsp;</td>
+						<td>&nbsp;</td>
+						<th>B</th>
+					</tr>
+					<tr>
+						<th>C</th>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td class="motDouble">&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td class="lettreDouble">&nbsp;</td>
+						<td>&nbsp;</td>
+						<td class="lettreDouble">&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td class="motDouble">&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<th>C</th>
+					</tr>
+					<tr>
+						<th>D</th>
+						<td class="lettreDouble">&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td class="motDouble">&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td class="lettreDouble">&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td class="motDouble">&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td class="lettreDouble">&nbsp;</td>
+						<th>D</th>
+					</tr>
+					<tr>
+						<th>E</th>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td class="motDouble">&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td class="motDouble">&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<th>E</th>
+					</tr>
+					<tr>
+						<th>F</th>
+						<td>&nbsp;</td>
+						<td class="lettreTriple">&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td class="lettreTriple">&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td class="lettreTriple">&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td class="lettreTriple">&nbsp;</td>
+						<td>&nbsp;</td>
+						<th>F</th>
+					</tr>
+					<tr>
+						<th>G</th>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td class="lettreDouble">&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td class="lettreDouble">&nbsp;</td>
+						<td>&nbsp;</td>
+						<td class="lettreDouble">&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td class="lettreDouble">&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<th>G</th>
+					</tr>
+					<tr>
+						<th>H</th>
+						<td class="motTriple">&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td class="lettreDouble">&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td class="motDouble caseCentre"><icon class="icon-asterisk"></icon></td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td class="lettreDouble">&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td class="motTriple">&nbsp;</td>
+						<th>H</th>
+					</tr>
+					<tr>
+						<th>I</th>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td class="lettreDouble">&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td class="lettreDouble">&nbsp;</td>
+						<td>&nbsp;</td>
+						<td class="lettreDouble">&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td class="lettreDouble">&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<th>I</th>
+					</tr>
+					<tr>
+						<th>J</th>
+						<td>&nbsp;</td>
+						<td class="lettreTriple">&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td class="lettreTriple">&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td class="lettreTriple">&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td class="lettreTriple">&nbsp;</td>
+						<td>&nbsp;</td>
+						<th>J</th>
+					</tr>
+					<tr>
+						<th>K</th>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td class="motDouble">&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td class="motDouble">&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;
+						</th>
+						<th>K
+						</td>
+					</tr>
+					<tr>
+						<th>L</th>
+						<td class="lettreDouble">&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td class="motDouble">&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td class="lettreDouble">&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td class="motDouble">&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td class="lettreDouble">&nbsp;</td>
+						<th>L</th>
+					</tr>
+					<tr>
+						<th>M</th>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td class="motDouble">&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td class="lettreDouble">&nbsp;</td>
+						<td>&nbsp;</td>
+						<td class="lettreDouble">&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td class="motDouble">&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<th>M</th>
+					</tr>
+					<tr>
+						<th>N</th>
+						<td>&nbsp;</td>
+						<td class="motDouble">&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td class="lettreTriple">&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td class="lettreTriple">&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td class="motDouble">&nbsp;</td>
+						<td>&nbsp;</td>
+						<th>N</th>
+					</tr>
+					<tr>
+						<th>O</th>
+						<td class="motTriple">&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td class="lettreDouble">&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td class="motTriple">&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td class="lettreDouble">&nbsp;</td>
+						<td>&nbsp;</td>
+						<td dropzone="move">&nbsp;</td>
+						<td class="motTriple">&nbsp;</td>
+						<th>O</th>
+					</tr>
+					<tr>
+						<th class="coin-b-l">&nbsp;</th>
+						<th>1</th>
+						<th>2</th>
+						<th>3</th>
+						<th>4</th>
+						<th>5</th>
+						<th>6</th>
+						<th>7</th>
+						<th>8</th>
+						<th>9</th>
+						<th>10</th>
+						<th>11</th>
+						<th>12</th>
+						<th>13</th>
+						<th>14</th>
+						<th>15</th>
+						<th class="coin-b-r">&nbsp;</th>
+					</tr>
+				</table>
+			</div>
 		</div>
 	</section>
 }
