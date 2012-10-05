@@ -14,7 +14,8 @@
 
 #board th, #board td {
 	border: 1px solid white;
-	width: 32px;
+	min-width: 32px;
+	min-height: 32px;
 	height: 32px;
 	text-align: center;
 	padding: 0;
@@ -31,3 +32,11 @@
 .lettreTriple { background-color: darkblue;	}
 .lettreDouble { background-color: lightblue;	}
 .caseCentre { }
+
+.motTriple.highlightDrop, 
+.motDouble.highlightDrop, 
+.lettreTriple.highlightDrop, 
+.lettreDouble.highlightDrop, 
+.caseCentre.highlightDrop {
+	background-color: cyan;
+}

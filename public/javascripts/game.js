@@ -1,93 +1,71 @@
+function endDrop(currentObject, ui){
+	ui.draggable.attr("style", "");
+	$(currentObject).removeClass('highlightDrop');
+}
+
 $(document).ready(function() {
 	// Drag
 	$('.letter').attr("draggable", true);
-	$('.letter').addClass("drag");
-
+	$('.letter').draggable({
+		start: function(event, ui){
+			$(this).addClass('highlightDrag');
+			
+			var parentTag = $(this).parent();
+			
+			if(parentTag.hasClass("caseCentre")){
+				parentTag.html('<icon class="icon-asterisk"></icon>');
+			}
+			
+			if(parentTag.is("td")){
+				$(this).droppable( "option", "disabled", false );
+			}
+		},	
+		stop: function(event, ui){
+			$(this).removeClass('highlightDrag');
+		},	
+		revert: true,
+		zIndex: 2000,
+		addClasses: false
+	});
 	// Drop
-	$('.letter').addClass("drop");
-	$("#bag").addClass("drop");
-	$("#board td").addClass("drop");
-	$("#carrier").addClass("drop");
+	$('#bag, #carrier, #board td, .letter').droppable({
+		hoverClass: "highlightDrop"
+	});
+	
+	$('#carrier').droppable({
+		'drop': function(event, ui){
+			$(this).append(ui.draggable);
+			endDrop(this, ui);
+			ui.draggable.droppable( "option", "disabled", false );
+		}
+	});
+	
+	$('#bag').droppable({
+		'drop': function(event, ui){
+			$('#endSac').before(ui.draggable);
+			endDrop(this, ui);
+			ui.draggable.droppable( "option", "disabled", false );
+		}
+	});
+	
+	$('.letter').droppable({
+		'drop': function(event, ui){
+			$(this).before(ui.draggable);
+			endDrop(this, ui);
+			ui.draggable.droppable( "option", "disabled", false );
+		}
+	});
+	
+	$('#board td').droppable({
+		'drop': function(event, ui){
+			$(this).html(ui.draggable);
+			endDrop(this, ui);
+			$(this).droppable( "option", "disabled", true );
+			ui.draggable.droppable( "option", "disabled", true );
+		}
+	});
+	
 
-
-
-//	// Action DnD
-//
-//	// //////////////////////////
-//	// / DROP
-//	// //////////////////////////
-//	function tdDropBind() {
-//		$('td.drop').on({
-//			'dropover' : function(ev, drop, drag) {
-//				$(this).addClass('highlightDrop');
-//			},
-//			'dropout' : function(ev, drop, drag) {
-//				$(this).removeClass('highlightDrop');			
-//			},
-//			'dropon' : function(ev, drop, drag) {
-//				$(this).html(drag.element);
-//				drag.element.attr("style", "");
-//				$(this).removeClass('highlightDrop');
-//				$(this).removeClass('drop');
-//				$(this).off();
-//			}
-//		});
-//	}
-//	tdDropBind();
-//
-//	$('#realPortePiece, #realSac ').on({
-//		"dropover" : function(ev, drop, drag) {
-//			$(this).addClass('highlightDrop');
-//		},
-//		"dropout" : function(ev, drop, drag) {
-//			$(this).removeClass('highlightDrop');
-//		}
-//	});
-//
-//	$('#realPortePiece').on({
-//		'dropon' : function(ev, drop, drag) {	
-//			$(this).removeClass('highlightDrop');		
-//			$(this).append(drag.element);
-//			drag.element.attr("style", "");
-//		}
-//	});
-//
-//	$('#realSac ').on({
-//		'dropon' : function(ev, drop, drag) {
-//			$(this).removeClass('highlightDrop');
-//			$(this).prepend(drag.element);
-//			drag.element.attr("style", "");
-//		}
-//	});
-//
-//
-//	// //////////////////////////
-//	// / DRAG
-//	// //////////////////////////
-//	var dragBind = $('.drag').on({
-//		'draginit' : function(ev, drag) {
-//		    var parentTag = $(this).parent();
-//
-//			if(parentTag.is("td")) {
-//				parentTag.addClass('drop');
-//				tdDropBind();
-//			}
-//		},
-//		'dragmove' : function(ev, drag) {
-//			$(this).addClass('highlightDrag');
-//			var parentTag = $(this).parent();
-//			if(parentTag.hasClass("caseCentre")){
-//				parentTag.html('<icon class="icon-asterisk"></icon>');
-//			}
-//		},
-//		'dragend' : function(ev, drag) {
-//			$(this).removeClass('highlightDrag');
-//
-//		}
-//	});
-//
-//
-//
 //	$('#searchButton').click(function(){
 //		var children = $("#realPortePiece").children().text()
 //

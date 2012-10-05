@@ -4,13 +4,27 @@ body {
 	margin-top: 5px;
 }
 
-#carrierPlace, #bagPlace, #resultsPlace, #boardPlace {
-	width: 90%;
-	margin: auto;
-	padding: 1em;
-	padding-top: 0em;
+#bagPlace, #carrierPlace, #resultsPlace, #boardPlace{
 	border: 1px dashed grey;
+	padding: 1em;
+	padding-top: 0em;	
 	margin-top: 1em;
+}
+
+#boardPlace {
+	padding-top: 1em;	
+}
+
+#carrierPlace, #resultsPlace {
+	margin-left: -1em;
+	margin-right: 1em;
+}
+#bagPlace {
+	margin-left: 1em;
+}
+
+#boardPlace{
+ 	margin-left : -2em;
 }
 
 #carrier, #bag {	
@@ -46,6 +60,7 @@ body {
 
 	border: 1px solid black;
 	border-radius: 5px;
+	z-index:1000;
 }
 
 #bagPlace .letter, #carrierPlace .letter {
@@ -53,6 +68,7 @@ body {
 	margin-right: 5px;
 	margin-bottom: 5px;
 }
+
 #searchButton{
 	margin: auto;
 	margin-top: 1em;
@@ -64,12 +80,14 @@ body {
 }
 
 .highlightDrag {
+	background-color: purple;
+	color: white;
+}
+.highlightDrop, #carrier.highlightDrop, #letter.highlightDrop, #bag.highlightDrop {
+/* 	border: 1px solid cyan; */
 	background-color: cyan;
 }
-.highlightDrop {
-	border: 1px solid cyan;
-	background-color: cyan;
-}
+
 
 [draggable=true]{
 	-moz-user-select: none;
