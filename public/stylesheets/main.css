@@ -48,6 +48,10 @@ body {
 	margin: auto;
 }
 
+.ico {
+	width: 14px;
+	height: 14px;
+}
 
 .letter {
 	background: #FC6;
