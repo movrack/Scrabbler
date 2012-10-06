@@ -6,7 +6,8 @@
 GET     /                           controllers.Application.index
 GET     /game                       controllers.Application.game
 GET     /dictionnary               	controllers.Application.dictionnary
-GET     /find/:word               	controllers.Application.find(word:String)
+POST     /find       				controllers.Application.findp
+GET    /find/:word/:board          controllers.Application.find(word:String, board:String)
 
 
 # Map static resources from the /public folder to the /assets URL path

@@ -1,17 +1,18 @@
 package controllers
 
+import scala.collection.parallel.immutable.ParSeq
+
 import models._
 import play.api._
-import play.api.mvc._
-import play.api.cache.Cache
 import play.api.Play.current
-import play.api.db.DB
-import scala.collection.parallel.immutable.ParSeq
 import play.api.cache.Cached
+import play.api.data._
+import play.api.data.Forms._
+import play.api.libs.json
+import play.api.libs.json.Json._
+import play.api.mvc._
 
 object Application extends Controller {
-	val DICTIONARY = "public/dictionnary.txt"
-	val linesFromDic:ParSeq[String] = Dictionary.read(DICTIONARY)
   
   def index = Action {
     Ok(views.html.index("Scrabbler home"))
@@ -25,24 +26,41 @@ object Application extends Controller {
 
   	def dictionnary = Cached("dictionnary") {
   	  Action {
-	  	  Ok(views.html.dictionnary(linesFromDic.toList))
+	  	  Ok(views.html.dictionnary(Dictionary.getWords.toList))
 	  	}
 	}
   	
-  def find(word: String) = Action {
-		println("> Searching for word : " + word + "\n")
-
-		// Dictionary
-//		println("Dictionary :\n\t" + linesFromDic)
-
-		// Combinaison
-		val comb = Dictionary.combinaisons(word).par
-//		println("Words :\n\t" + comb)
+  def find(word: String, board:String) = Action {
+		val solutions = Resolveur.resolve(word, board)
+		val jsResult = Ok("{hello}").withHeaders(
+		        "Content-Type" -> "application/json"
+	        ) 
+		jsResult
 		
-		// Intersection
-		val common = linesFromDic intersect comb
-		println("Common :\n\t" + common)
-		println("\n> End searching")
-		Ok("resultat " + common)
 	}
+  	
+  val findForm = Form(
+    tuple(
+        "word" -> text,
+  		"board" -> text
+  	)
+  )
+  
+  def findp = Action { implicit request =>
+    findForm.bindFromRequest.fold(
+        formWithErrors => BadRequest("{\"result\": \"error\"}"),
+        {
+            case (word, board) => {
+                val solutions:Map[String, (Char, Int, Int)] = Resolveur.resolve(word, board)
+                var js = "{"
+                for(word <- solutions){
+                    js += "\""+word._1+"\":[\""+word._2._1+"\",\""+word._2._2+"\",\""+word._2._3+"\"],"
+                }
+                js = js dropRight 1 
+                js +="}"
+                Ok("{\"result\": \"succes\", \"solution\":"+js+"}")
+            }
+        }
+    )
+  }
 }

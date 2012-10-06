@@ -82,9 +82,12 @@ $(document).ready(function() {
 
 	$('#searchButton').click(function(){
 		var children = $("#carrier").children().text();
+		var board = "{'hello':'ok'}";
 		$.ajax({
-			url: "/find/"+children,
-			type: "GET",
+			url: "/find", 
+			data: "word="+children+"&board="+board,
+			type: "POST",
+			dataType: 'json',
 			success: function(data){
 				console.log(data);
 				alert(data);

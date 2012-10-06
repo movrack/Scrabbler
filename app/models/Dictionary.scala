@@ -1,8 +1,17 @@
 package models
 //import scala.collection.parallel._
 import java.io._
+import scala.collection.parallel.immutable.ParSeq
 
 object Dictionary {
+  
+	val DICTIONARY = "public/dictionnary.txt"
+	val linesFromDic:ParSeq[String] = Dictionary.read(DICTIONARY)
+	
+	def getWords:ParSeq[String] = {
+	  linesFromDic
+	}
+	
 	def read(dictionnaire: String) = {
 		def read(buf: BufferedReader, acc: List[String]): List[String] = buf.readLine match {
 			case null => acc

@@ -1,6 +1,6 @@
 package models
 
-class Game {
+class Game() {
 	val gameLettersDefinition = Map(// "letter" -> (points, quantity)
 	    'A' -> (1, 9),	'B' -> (3, 2),	'C' -> (3, 2),	'D' -> (2, 3),
 	    'E' -> (1, 15),	'F' -> (4, 2),	'G' -> (2, 2),	'H' -> (4, 2),
