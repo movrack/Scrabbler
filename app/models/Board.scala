@@ -14,7 +14,7 @@ case class Board() {
 
 case object Board{
     def find(word:String): (Char, Int, Int) = {
-        var result = ('A', 5, 142)
+        var result = ('A', 1, 1)
         result
     }
 }

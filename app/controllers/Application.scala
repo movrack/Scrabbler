@@ -51,14 +51,9 @@ object Application extends Controller {
         formWithErrors => BadRequest("{\"result\": \"error\"}"),
         {
             case (word, board) => {
-                val solutions:Map[String, (Char, Int, Int)] = Resolveur.resolve(word, board)
-                var js = "{"
-                for(word <- solutions){
-                    js += "\""+word._1+"\":[\""+word._2._1+"\",\""+word._2._2+"\",\""+word._2._3+"\"],"
-                }
-                js = js dropRight 1 
-                js +="}"
-                Ok("{\"result\": \"succes\", \"solution\":"+js+"}")
+                val solutions:String = Resolveur.resolve(word, board)
+                
+            	Ok("{\"result\": \"succes\", \"solution\":"+solutions+"}")
             }
         }
     )

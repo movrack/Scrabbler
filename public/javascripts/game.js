@@ -8,9 +8,39 @@ function setCase(boardCase, letterCasse){
 	var line = boardCase.siblings('th').first().html();
 	var column = boardCase.prevAll().length;
 	var letter = letterCasse.html();		
-	
 }
 
+function buildResultTab(datas){
+	var resultTag = $('#results');
+	resultTag.html("");
+	if(datas == "empty"){
+		resultTag.html("<td colspan=\"5\">Aucun résultats disponibles</td>");
+	} else {
+		for(solution in datas){
+			var solutionLine = "<tr>";
+			solutionLine += "<td>";
+	
+			solutionLine += 
+				"<a href=\"http://www.cnrtl.fr/definition/"+solution+"\" target=\"_blank\">"
+					+"<img class=\"ico\" src=\"/assets/images/cnrtl.ico\"/>"
+				+"</a>"
+				+"<a href=\"http://fr.wiktionary.org/wiki/"+solution+"\" target=\"_blank\">"
+					+"<img class=\"ico\" src=\"/assets/images/wiki.ico\"/>"
+				+"</a>"
+				+"<a href=\"http://www.le-dictionnaire.com/definition.php?mot="+solution+"\" target=\"_blank\">"
+					+"<img class=\"ico\" src=\"/assets/images/ledictionnaire.ico\"/>"
+				+"</a>";
+			solutionLine += "</td>";
+	
+			solutionLine += "<td>"+solution+"</td>";
+			solutionLine += "<td>"+datas[solution]['l']+"</td>";
+			solutionLine += "<td>"+datas[solution]['c']+"</td>";
+			solutionLine += "<td>"+datas[solution]['p']+"</td>";
+			solutionLine += "</tr>";
+			resultTag.append(solutionLine);
+		}
+	}
+}
 var board = null;
 var source = null;
 $(document).ready(function() {
@@ -89,8 +119,8 @@ $(document).ready(function() {
 			type: "POST",
 			dataType: 'json',
 			success: function(data){
-				console.log(data);
-				alert(data);
+				var datas = data.solution;
+				buildResultTab(datas);
 			}
 		});
 	});

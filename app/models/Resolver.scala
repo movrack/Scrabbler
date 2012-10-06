@@ -5,7 +5,7 @@ import scala.collection.parallel.immutable.ParSeq
 object Resolveur {
 
 	
-	def resolve(word:String, board:String): Map[String,  (Char, Int, Int)] = {
+	def resolve(word:String, board:String):String = {
 		println("> Searching for word : " + word + "\n")
 	    var solutions : Map[String, (Char, Int, Int)] = Map()
 	    
@@ -22,6 +22,23 @@ object Resolveur {
 		    var resultWord = Board.find(word)
 		    solutions +=  word -> resultWord
 		}
-	    solutions
+		
+		solutionMapToJsonString(solutions)
+		
+	}
+	
+	def solutionMapToJsonString(solutions: Map[String, (Char, Int, Int)]):String = {
+	    var js = ""
+        if(solutions isEmpty ){
+            js = "\"empty\""
+        } else {
+            js += "{"
+            for(word <- solutions){
+                js += "\""+word._1+"\":{\"l\":\""+word._2._1+"\",\"c\":\""+word._2._2+"\",\"p\":\""+word._2._3+"\"},"
+            }
+            js = js dropRight 1 
+            js +="}"
+    	}
+	    js
 	}
 }
