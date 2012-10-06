@@ -1,8 +1,11 @@
 package controllers
 
+import models.Game
 import play.api._
 import play.api.mvc._
-import models.Game
+import play.api.cache.Cache
+import play.api.Play.current
+import play.api.db.DB
 
 object Application extends Controller {
   
@@ -13,6 +16,10 @@ object Application extends Controller {
   def game = Action {
     val game = new Game()
     println(game.bag)
+//    DB.withConnection { conn =>
+//  		val result
+//    }
+//    Cache.set("Game", game)
 //    for(letter <- game.bag.letter) {
 //      println(letter)
 //    }

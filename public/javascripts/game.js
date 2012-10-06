@@ -2,17 +2,25 @@ function endDrop(currentObject, ui){
 	ui.draggable.attr("style", "");
 	$(currentObject).removeClass('highlightDrop');
 }
+
+
+function setCase(boardCase, letterCasse){
+	var line = boardCase.siblings('th').first().html();
+	var column = boardCase.prevAll().length;
+	var letter = letterCasse.html();		
+	
+}
+
+var board = null;
 var source = null;
 $(document).ready(function() {
 	// Drag
 	$('.letter').attr("draggable", true);
 	$('.letter').draggable({
 		start: function(event, ui){
-			console.log('----');
 			$(this).addClass('highlightDrag');
 			
 			var parentTag = $(this).parent();
-			console.log(parentTag);
 			source = parentTag;
 			if(parentTag.is("td")){
 				$(this).droppable( "option", "disabled", false );
@@ -21,8 +29,6 @@ $(document).ready(function() {
 		stop: function(event, ui){
 			$(this).removeClass('highlightDrag');
 			var parentTag = $(this).parent();
-			console.log(parentTag);
-			console.log(source);
 			if(source.hasClass("caseCentre") && source != parentTag){
 				source.html('<icon class="icon-asterisk"></icon>');
 			}
@@ -60,18 +66,22 @@ $(document).ready(function() {
 		}
 	});
 	
+
 	$('#board td').droppable({
 		'drop': function(event, ui){
-			$(this).html(ui.draggable);
+			var letterCasse = ui.draggable;
+			$(this).html(letterCasse);
 			endDrop(this, ui);
 			$(this).droppable( "option", "disabled", true );
-			ui.draggable.droppable( "option", "disabled", true );
+			letterCasse.droppable( "option", "disabled", true );
+			
+			setCase($(this), letterCasse);
 		}
 	});
-	
+			
 
-//	$('#searchButton').click(function(){
-//		var children = $("#realPortePiece").children().text()
-//
-//	});
+//			$('#searchButton').click(function(){
+//				var children = $("#realPortePiece").children().text()
+		//
+//			});
 });
