@@ -80,8 +80,14 @@ $(document).ready(function() {
 	});
 			
 
-//			$('#searchButton').click(function(){
-//				var children = $("#realPortePiece").children().text()
-		//
-//			});
+	$('#searchButton').click(function(){
+		var children = $("#carrier").children().text();
+		$.ajax({
+			url: "/find/"+children,
+			type: "GET",
+			success: function(data){
+				console.log(data);
+			}
+		});
+	});
 });

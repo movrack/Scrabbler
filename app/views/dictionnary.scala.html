@@ -1,0 +1,15 @@
+@(linesFromDic:List[String])
+
+@import helper._ 
+@main("Scrabbler") {
+    <section class="row-fluid">
+    	<a href="http://www.motsduscrabble.com/"target="_blank">Source des mots trouvé</a><br />
+    	Nombre de mots: @linesFromDic.length
+				
+	    <ul>
+			@for(word <- linesFromDic) {
+				<li>@word</li>
+			}
+		</ul>
+	</section>
+}
