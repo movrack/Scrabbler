@@ -8,7 +8,7 @@
 				<h3>Sac</h3>
 				<div id="bag">
 					@for(letter <- game.bag.letters) {
-						<div class="letter">@letter</div>
+						<div class="letter" title="@letter.points point(s)">@letter</div>
 					}
 					<div id="endSac" class="clear">&nbsp;</div>
 				</div>
