@@ -67,6 +67,17 @@ body {
 	z-index:1000;
 }
 
+.letterPoints{
+	font-size: 0.6em;
+	position: relative;
+	bottom: 3px;
+	right: 3px;
+	float:right;
+	margin-top: 1em;
+	z-index: 1002;
+	float: right;
+}
+
 #bagPlace .letter, #carrierPlace .letter {
 	float: left;
 	margin-right: 5px;
