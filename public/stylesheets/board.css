@@ -1,6 +1,7 @@
 @CHARSET "UTF-8";
 
 #board {
+	background: #090;
 	border: 2px solid darkred;
 	border-radius: 10px;
 	margin: auto;
@@ -24,12 +25,12 @@
 #board .coin-b-l { border-bottom-left-radius: 5px;}
 #board .coin-b-r { border-bottom-right-radius: 5px;}
 
-#board th { 				background-color: lightgrey; border: 1px solid white;}
-#board td {					background-color: #090;			border: 1px solid white;}
-#board td.motTriple { 		background-color: red; 			border: 1px dotted red;}
-#board td.motDouble { 		background-color: pink; 		border: 1px dotted pink;}
-#board td.lettreTriple { 	background-color: darkblue; 	border: 1px dashed darkblue;}
-#board td.lettreDouble { 	background-color: lightblue; 	border: 1px dashed lightblue;}
+#board th { 				background: lightgrey; 	border: 1px solid white;}
+#board td {					background: #090;		border: 1px solid white;}
+#board td.motTriple { 		background: red; 		border: 1px dashed white;}
+#board td.motDouble { 		background: pink; 		border: 1px dashed white;}
+#board td.lettreTriple { 	background: darkblue; 	border: 1px dashed white;}
+#board td.lettreDouble {	background: lightblue; 	border: 1px dashed white;}
 .caseCentre { }
 
 .motTriple.highlightDrop, 
@@ -37,5 +38,5 @@
 .lettreTriple.highlightDrop, 
 .lettreDouble.highlightDrop, 
 .caseCentre.highlightDrop {
-	background-color: cyan;
+	background: cyan;
 }
