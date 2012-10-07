@@ -7,7 +7,7 @@ object Resolveur {
 	
 	def resolve(word:String, board:String):String = {
 		println("> Searching for word : " + word + "\n")
-	    var solutions : Map[String, (Char, Int, Int)] = Map()
+	    var solutions : Map[String, (Char, Int, Int, Char)] = Map()
 	    
 	
 		// Combinaison
@@ -27,14 +27,19 @@ object Resolveur {
 		
 	}
 	
-	def solutionMapToJsonString(solutions: Map[String, (Char, Int, Int)]):String = {
+	def solutionMapToJsonString(solutions: Map[String, (Char, Int, Int, Char)]):String = {
 	    var js = ""
         if(solutions isEmpty ){
             js = "\"empty\""
         } else {
             js += "{"
             for(word <- solutions){
-                js += "\""+word._1+"\":{\"l\":\""+word._2._1+"\",\"c\":\""+word._2._2+"\",\"p\":\""+word._2._3+"\"},"
+                js += "\""+word._1+"\":{"
+                js += "\"l\":\""+word._2._1+"\","
+                js += "\"c\":\""+word._2._2+"\","
+                js += "\"p\":\""+word._2._3+"\","
+                js += "\"d\":\""+word._2._4+"\""
+                js += "},"
             }
             js = js dropRight 1 
             js +="}"

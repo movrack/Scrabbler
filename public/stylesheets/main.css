@@ -5,9 +5,9 @@ body {
 }
 
 #bagPlace, #carrierPlace, #resultsPlace, #boardPlace{
-	border: 1px dashed grey;
-	padding: 1em;
-	padding-top: 0em;	
+/* 	border: 1px dashed grey; */
+/* 	padding: 1em; */
+/* 	padding-top: 0em;	 */
 	margin-top: 1em;
 }
 
@@ -92,6 +92,13 @@ body {
 	background-color: cyan;
 }
 
+.label-position {
+	width: 15px;
+	min-width: 15px;
+	display: block;
+	text-align: center;
+	margin: auto;
+}
 
 [draggable=true]{
 	-moz-user-select: none;

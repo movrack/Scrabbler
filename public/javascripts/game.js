@@ -19,7 +19,7 @@ function buildResultTab(datas){
 		for(solution in datas){
 			var solutionLine = "<tr>";
 			solutionLine += "<td>";
-	
+
 			solutionLine += 
 				"<a href=\"http://www.cnrtl.fr/definition/"+solution+"\" target=\"_blank\">"
 					+"<img class=\"ico\" src=\"/assets/images/cnrtl.ico\"/>"
@@ -33,13 +33,19 @@ function buildResultTab(datas){
 			solutionLine += "</td>";
 	
 			solutionLine += "<td>"+solution+"</td>";
-			solutionLine += "<td>"+datas[solution]['l']+"</td>";
-			solutionLine += "<td>"+datas[solution]['c']+"</td>";
-			solutionLine += "<td>"+datas[solution]['p']+"</td>";
+			solutionLine += "<td><span class=\"label label-success label-position\">"+datas[solution]['p']+"</span></td>";
+			solutionLine += "<td><span class=\"label label-info label-position\">"+datas[solution]['l']+"</span></td>";
+			solutionLine += "<td><span class=\"label label-info label-position\">"+datas[solution]['c']+"</span></td>";
+			solutionLine += "<td><span class=\"label label-info label-position\">"+directionIcon(datas[solution]['d'])+"</span></td>";
 			solutionLine += "</tr>";
 			resultTag.append(solutionLine);
 		}
 	}
+}
+function directionIcon(directionChar){
+	var icon = (directionChar == 'h') ? "icon-arrow-right" : "icon-arrow-down" ;
+	return "<i class=\"icon-white "+icon+"\"></i>";
+	
 }
 var board = null;
 var source = null;
@@ -118,10 +124,16 @@ $(document).ready(function() {
 			data: "word="+children+"&board="+board,
 			type: "POST",
 			dataType: 'json',
+			
 			success: function(data){
 				var datas = data.solution;
-				buildResultTab(datas);
+				buildResultTab(datas);		
+			},
+			error: function(data){
+				console.log("resolver error");
+				console.log(data);
 			}
+		
 		});
 	});
 });
