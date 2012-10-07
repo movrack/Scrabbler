@@ -27,6 +27,8 @@ object Resolveur {
 		
 	}
 	
+
+	
 	def solutionMapToJsonString(solutions: Map[String, (Char, Int, Int, Char)]):String = {
 	    var js = ""
         if(solutions isEmpty ){

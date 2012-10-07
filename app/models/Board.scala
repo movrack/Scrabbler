@@ -14,7 +14,17 @@ case class Board() {
 
 case object Board{
     def find(word:String): (Char, Int, Int, Char) = {
-        var result = ('H', 8, 1, 'h')
+        var result = ('H', 8, countWord(word), 'h')
         result
     }
+    
+	def countWord(word:String):Int = {
+	  var sum = 0;
+	  for(char <- word){
+	    sum += Game.letterToPoint(char)
+	  }
+	  println(sum)
+	  sum
+	}
 }
+
