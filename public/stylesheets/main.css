@@ -70,10 +70,10 @@ body {
 .letterPoints{
 	font-size: 0.6em;
 	position: relative;
-	bottom: 3px;
 	right: 3px;
 	float:right;
-	margin-top: 1em;
+	height: 6px;
+	margin-top: 0.9em;
 	z-index: 1002;
 	float: right;
 }
