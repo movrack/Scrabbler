@@ -10,7 +10,7 @@
 					@for(letter <- game.bag.letters) {
 						<div class="letter">
 							<div class="letterPoints">@letter.points</div>
-							<div>@letter</div>
+							<div class="letterCharacter">@letter</div>
 						</div>
 					}
 					<div id="endSac" class="clear">&nbsp;</div>
@@ -46,7 +46,7 @@
 						</tr>
 					</thead>	
 					<tbody id="results" >
-						<td colspan="6">Aucun résultats disponibles</td>
+						<tr><td colspan="6">Aucun résultats disponibles</td></tr>
 					</tbody>
 				</table>
 			</div>

@@ -40,3 +40,4 @@
 .caseCentre.highlightDrop {
 	background: cyan;
 }
+#board td.hightlightCase { background: yellow; }
