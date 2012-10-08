@@ -13,17 +13,24 @@ case class Board() {
 }
 
 case object Board{
-    def find(word:String): (Char, Int, Int, Char) = {
-        var result = ('H', 8, countWord(word), 'h')
+  
+
+   
+    def find(word:String): (BoardPosition, Int) = {
+	    var position: BoardPosition = new BoardPosition('H', 8, 'h')
+	    var points: Int = countWordPoints(word, position)
+        var result = (position, points)
         result
     }
     
-	def countWord(word:String):Int = {
-	  var sum = 0;
-	  for(char <- word){
-	    sum += Game.letterToPoint(char)
-	  }
-	  sum
+	def countWordPoints(word:String, position:BoardPosition):Int = {
+	    var sum = 0
+	    var doubleWord = 0
+	    var tripleWord = 0
+	    for(char <- word){
+	      sum += Game.letterToPoint(char)
+	    }
+	    sum
 	}
 }
 
