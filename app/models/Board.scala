@@ -24,13 +24,46 @@ case object Board{
     }
     
 	def countWordPoints(word:String, position:BoardPosition):Int = {
-	    var sum = 0
-	    var doubleWord = 0
-	    var tripleWord = 0
+	    var sum: Int = 0
+	    var doubleWord: Int = 1
+	    var tripleWord: Int = 1
+	    var i: Int = 0
 	    for(char <- word){
+	      var letterPoints = Game.letterToPoint(char);
+	      
+	      if(isCaseDoubleLetter(position.getOffsetPosition(i))){
+	        letterPoints *= 2
+	      }
+	      if(isCaseDoubleLetter(position.getOffsetPosition(i))){
+	        letterPoints *= 3
+	      }
+	      if(isCaseDoubleWord(position.getOffsetPosition(i))){
+	        doubleWord += 1
+	      }
+	      if(isCaseTripleWord(position.getOffsetPosition(i))){
+	        tripleWord += 1
+	      }
 	      sum += Game.letterToPoint(char)
+	      i+=1
 	    }
+	    sum *= doubleWord * tripleWord
 	    sum
+	}
+	
+	def isCaseDoubleLetter(position:BoardPosition): Boolean = {
+	  false
+	}
+	
+	def isCaseDoubleTripel(position:BoardPosition): Boolean = {
+	  false
+	}
+	
+	def isCaseDoubleWord(position:BoardPosition): Boolean = {
+	  false
+	}
+	
+	def isCaseTripleWord(position:BoardPosition): Boolean = {
+	  false
 	}
 }
 
