@@ -31,6 +31,7 @@
 #board td.motDouble { 		background: pink; 		border: 1px dashed white;}
 #board td.lettreTriple { 	background: darkblue; 	border: 1px dashed white;}
 #board td.lettreDouble {	background: lightblue; 	border: 1px dashed white;}
+#board td.highlightDrop {	background: cyan; }
 .caseCentre { }
 
 .motTriple.highlightDrop, 
