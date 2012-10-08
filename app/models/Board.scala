@@ -23,7 +23,6 @@ case object Board{
 	  for(char <- word){
 	    sum += Game.letterToPoint(char)
 	  }
-	  println(sum)
 	  sum
 	}
 }

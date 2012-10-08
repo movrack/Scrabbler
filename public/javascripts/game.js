@@ -46,7 +46,8 @@ function boardUnHighlightCase(line, column, lineOffset, columnOffset){
 	$('#board').find('tr').eq(calculedLine).find('td').eq(calculedColumn).removeClass('hightlightCase');
 }
 
-function endDrop(currentObject, ui){
+
+function finalizeDrop(currentObject, ui){
 	ui.draggable.attr("style", "");
 	$(currentObject).removeClass('highlightDrop');
 }
@@ -66,6 +67,34 @@ function carrierWord(){
 	});
 	
 	return word;
+}
+
+function boardToJson() {
+
+	var cases = $('#board td');
+	var board = "";
+	var line = 0;
+	var column = 0;
+	cases.each(function(){
+		// Find char
+		var char = $(this).find('.letterCharacter').html();
+		if (typeof(char) == 'undefined') char = '_';
+		
+		// Offset
+		column = column % 15 + 1;
+		if (column == 1) line = line + 1;
+		
+		// Build JSon
+		board += (line == 1 && column == 1) 	? '{' : ''; 
+		board += (column == 1) 	? '{' : ''; 
+		board += char;
+		board += (column == 15) ? '}' : ',';
+		board += (line == 15 && column == 15) 	? '}' : '';
+		board += (line != 15 && column == 15) 	? ',' : '';
+	});
+	console.log(board);
+	
+	return board;
 }
 
 function buildResultTab(datas){
@@ -108,6 +137,7 @@ function directionIcon(directionChar){
 
 var board = null;
 var source = null;
+
 $(document).ready(function() {
 	// Drag
 	$('.letter').attr("draggable", true);
@@ -140,7 +170,7 @@ $(document).ready(function() {
 	$('#carrier').droppable({
 		'drop': function(event, ui){
 			$(this).append(ui.draggable);
-			endDrop(this, ui);
+			finalizeDrop(this, ui);
 			ui.draggable.droppable( "option", "disabled", false );
 		}
 	});
@@ -148,7 +178,7 @@ $(document).ready(function() {
 	$('#bag').droppable({
 		'drop': function(event, ui){
 			$('#endSac').before(ui.draggable);
-			endDrop(this, ui);
+			finalizeDrop(this, ui);
 			ui.draggable.droppable( "option", "disabled", false );
 		}
 	});
@@ -156,7 +186,7 @@ $(document).ready(function() {
 	$('.letter').droppable({
 		'drop': function(event, ui){
 			$(this).before(ui.draggable);
-			endDrop(this, ui);
+			finalizeDrop(this, ui);
 			ui.draggable.droppable( "option", "disabled", false );
 		}
 	});
@@ -166,7 +196,7 @@ $(document).ready(function() {
 		'drop': function(event, ui){
 			var letterCasse = ui.draggable;
 			$(this).html(letterCasse);
-			endDrop(this, ui);
+			finalizeDrop(this, ui);
 			$(this).droppable( "option", "disabled", true );
 			letterCasse.droppable( "option", "disabled", true );
 			
@@ -176,10 +206,9 @@ $(document).ready(function() {
 			
 
 	$('#searchButton').click(function(){
-		var board = "{'hello':'ok'}";
 		$.ajax({
 			url: "/find", 
-			data: "word="+carrierWord()+"&board="+board,
+			data: "word="+carrierWord()+"&board="+boardToJson(),
 			type: "POST",
 			dataType: 'json',
 			
