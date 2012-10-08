@@ -25,6 +25,7 @@ Fait :
 
 A faire : 
 * Recherche de placement sur le plateau
+* Calcul des points en fonction de la position sur le plateau
 * Tri en fonction des points
 * Enregistrement de parties
 * Ajout les mots de plus de 7 lettres de "http://jph.durand.free.fr/scrabble.htm" dans le dictionnaire
