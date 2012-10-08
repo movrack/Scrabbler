@@ -11,6 +11,10 @@ Fonctionnement générale :
   Chaque acteur cherches les possibilités sur une colonne ou sur une ligne et calcul des points pour les mots pouvant être placé
 * Tri sur les collections parallèle sur base des points de chaques mot.
 
+Tester l'application
+--------------------
+L'application est hébergée sur le service cloud Heroku : http://scrabbler-manudev.herokuapp.com/
+
 Etat actuelle
 -------------
 Fait : 
@@ -23,4 +27,4 @@ A faire :
 * Recherche de placement sur le plateau
 * Tri en fonction des points
 * Enregistrement de parties
-* Ajout les mots de plus de 7 lettres de http://jph.durand.free.fr/scrabble.htm dans le dictionnaire
+* Ajout les mots de plus de 7 lettres de "http://jph.durand.free.fr/scrabble.htm" dans le dictionnaire
